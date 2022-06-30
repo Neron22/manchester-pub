@@ -3,8 +3,6 @@
   src: url("./assets/fonts/elephant-outline-webfont.woff") format("woff"),
   }
 
-
-
 body {
   overflow: hidden;
   margin: 0;
@@ -65,6 +63,7 @@ header {
 
 .booking {
   position: relative;
+  overflow: hidden;
   &::before {
     content:"";
     position: absolute;
@@ -82,8 +81,13 @@ header {
     top: 38px;
   }
 }
-
+.slideshow {
+  position: relative;
+  margin-top: 80px;
+}
 .hero-banner {
+  visibility: hidden;
+  position: absolute;
   margin-top: 56px;
   display: flex;
   flex-direction: column;
@@ -94,21 +98,29 @@ header {
     background-color: black;
     opacity: 0.8;
     position: absolute;
-    clip-path: inset(8% 18.1% 0% 31% round 25vw 25vw 0vw 0vw); transform: translate3d(0px, 0%, 0px) rotate(0.001deg);
   }
 }
 
-.hero-banner-title {
-  z-index: 1;
+.content-line {
+  height: 100px;
+  overflow: hidden;
   h1 {
     font-family: "elephant";
     font-size: 110px;
-    width: 70%;
     color: white;
     letter-spacing: 5px;
     font-weight: lighter;
     line-height: 104px;
+    margin: 0;
   }
+}
+
+.hero-banner-title {
+  padding-left: 40px;
+  z-index: 1;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  height: 300px;
 }
 
 .hero-banner-cta {
@@ -116,6 +128,8 @@ header {
   cursor: pointer;
   border: 1px solid #f1eae1;
   padding: 2px 24px;
+  margin-left: 40px;
+
   &::before {
     content:"";
     position: absolute;
@@ -134,4 +148,79 @@ header {
     top: 55px;
     left: -1%;
   }
+
+}
+
+.active {
+  visibility: visible;
+}
+.opacity {
+  animation: 8s opacity ease forwards infinite;
+}
+
+.line-up-clip {
+  animation: 8s anim-line-up-clip ease forwards infinite;
+}
+
+.line-up, .line-up2, .line-up3 {
+  animation: 8s anim-line-up ease forwards infinite;
+}
+.line-up2 {
+  animation-delay: 0.1s;
+}
+.line-up3 {
+  animation-delay: 0.2s;
+}
+@keyframes anim-line-up {
+  0% {
+    transform: translateY(100%);
+  }
+  10% {
+    transform: translateY(0%);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes anim-line-up-clip {
+  0% {
+    transform: translateY(-100%);
+    clip-path: inset(10% 29% 20% 40% round 25vw 25vw 25vw 25vw);
+    transform: translate3d(0px, -100%, 0px) rotate(0.001deg);
+  }
+  10% {
+    transform: translateY(0%);
+    clip-path: inset(10% 29% 20% 40% round 25vw 25vw 25vw 25vw);
+    transform: translate3d(0px, 0%, 0px) rotate(0.001deg);
+  }
+  15% {
+    transform: translateY(0%);
+    clip-path: inset(0% 18.1% 0% 31% round 25vw 25vw 0vw 0vw);
+    transform: translate3d(0px, 0%, 0px) rotate(0.001deg);
+  }
+  85% {
+    transform: translateY(0%);
+    clip-path: inset(0% 18.1% 0% 31% round 25vw 25vw 0vw 0vw);
+    transform: translate3d(0px, 0%, 0px) rotate(0.001deg);
+  }
+  90% {
+    transform: translateY(0%);
+    clip-path: inset(10% 29% 20% 40% round 25vw 25vw 25vw 25vw);
+    transform: translate3d(0px, 0%, 0px) rotate(0.001deg);
+  }
+  100% {
+    transform: translateY(100%);
+    clip-path: inset(10% 29% 20% 40% round 25vw 25vw 25vw 25vw);
+    transform: translate3d(0px, 100%, 0px) rotate(0.001deg);
+  }
+}
+
+@keyframes opacity {
+  0% {opacity:0;}
+  10% {opacity:1;}
+  90% {opacity:1;}
+  100% {opacity:0;}
 }
